@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuJD-NddcLbcaap_utAGs0yXcuVjaDFOUZn9SC1Cjs9h9jLrtGAiaiHDPq7e7H3tkZOg/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_CHE_003 = [
+    {
+        question: "A scientist observes faint, luminous rays moving towards a perforated electrode in a discharge tube, passing through its openings, and causing a glow on the opposite wall. What fundamental characteristic of these rays could be immediately inferred from their observed trajectory?",
+        options: [
+            "They are composed of neutral particles.",
+            "They are negatively charged.",
+            "They are positively charged.",
+            "They are electromagnetic waves."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory as positive rays moving towards the cathode (negative electrode), implying they are positively charged particles."
+    },
+    {
+        question: "When a discharge tube operates, generating canal rays, the nature of the residual gas inside the tube profoundly affects a specific characteristic of these rays. Which characteristic is directly influenced by the identity of the gas, unlike cathode rays?",
+        options: [
+            "Their ability to cause fluorescence.",
+            "Their particle nature.",
+            "Their charge-to-mass ratio.",
+            "Their deflection in electric fields."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the charge-to-mass (e/m) ratio of canal rays changes with the nature of the gas in the discharge tube, unlike cathode rays."
+    },
+    {
+        question: "The primary mechanism responsible for the production of positive rays in a discharge tube involves an interaction between two specific components. What accurately describes this fundamental interaction?",
+        options: [
+            "Thermal emission from the anode.",
+            "Photonic excitation of the cathode material.",
+            "Collisions of high-speed electrons with gas molecules.",
+            "Spontaneous decay of gas atoms into ions."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that positive rays are produced when high-speed electrons (cathode rays) collide with residual gas molecules, knocking out electrons and forming positive ions."
+    },
+    {
+        question: "An atomic emission spectrum is produced by exciting a gaseous element. Which characteristic of the resulting spectrum is considered unique to that specific element and serves as its 'fingerprint'?",
+        options: [
+            "The continuous nature of its colors.",
+            "The diffuse boundaries between its spectral lines.",
+            "The distinct wavelengths of its emitted bright lines.",
+            "Its similarity to a rainbow when dispersed by a prism."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that line spectra are unique and can be used to distinguish various elements because each element emits light of definite wavelengths."
+    },
+    {
+        question: "If an electron in a hydrogen atom transitions from a higher energy level (n₂ > 2) to the principal energy level n₁=2, what type of electromagnetic radiation would be typically observed?",
+        options: [
+            "Ultraviolet radiation.",
+            "Near Infrared radiation.",
+            "Visible light.",
+            "Far Infrared radiation."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that electron transitions to n₁=2 correspond to the Balmer Series, which is located in the visible region of the spectrum."
+    },
+    {
+        question: "Planck's quantum theory introduced a radical concept about energy transfer. What was the core idea that fundamentally contradicted the classical view of energy being radiated continuously?",
+        options: [
+            "Energy is directly proportional to its wavelength.",
+            "Energy can only be emitted or absorbed in discrete, indivisible packets.",
+            "Energy travels as a wave in a vacuum at a constant speed.",
+            "Energy increases with increasing amplitude of radiation."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that Planck's first postulate states energy is emitted or absorbed not continuously, but in small, discrete units called quanta."
+    },
+    {
+        question: "The principal quantum number (n) for an electron in an atom provides information about its energy and a specific spatial characteristic. What fundamental aspect of the electron's orbital does a higher 'n' value directly indicate?",
+        options: [
+            "A more spherical orbital shape.",
+            "A greater angular momentum.",
+            "A closer average distance from the nucleus.",
+            "A larger energy level size."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that the principal quantum number (n) denotes the principal shell, representing the average distance of the electron from the nucleus and the size of the energy level, where a higher 'n' means a larger size."
+    },
+    {
+        question: "An electron resides in a sub-shell where its azimuthal quantum number (l) is 2. Which descriptor most accurately characterizes the typical shape of the orbitals within this sub-shell?",
+        options: [
+            "Spherical.",
+            "Dumbbell-shaped.",
+            "Double dumbbell/sausage-shaped.",
+            "Pyramidal."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that for l=2, the sub-shell is a d-sub-shell, which is characterized by a double dumbbell/sausage shape."
+    },
+    {
+        question: "The magnetic quantum number (m) derives its significance from the Zeeman Effect. What specific property of an atomic orbital does this quantum number uniquely define?",
+        options: [
+            "Its overall energy within a shell.",
+            "Its inherent spin direction.",
+            "Its spatial orientation around the nucleus.",
+            "Its total number of constituent electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the magnetic quantum number indicates the orientation of the orbital in space around the nucleus, and it was developed from the Zeeman Effect."
+    },
+    {
+        question: "According to Pauli's Exclusion Principle, what is the maximum number of electrons that can share the same specific orbital, and what fundamental characteristic must distinguish them?",
+        options: [
+            "One electron; it must have a unique principal quantum number.",
+            "Two electrons; they must have identical spin quantum numbers.",
+            "Two electrons; they must have opposite spin quantum numbers.",
+            "Three electrons; they must all have parallel spins."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that an orbital can accommodate a maximum of two electrons, and these two electrons must have opposite spins, according to Pauli's Exclusion Principle."
+    },
+    {
+        question: "Consider an electron filling the atomic orbitals. The Aufbau principle guides this process by stating a specific energy-related criterion. What is the primary determinant for the order in which electrons fill orbitals?",
+        options: [
+            "Orbitals with a higher spin quantum number are filled first.",
+            "Orbitals with the same principal quantum number are filled simultaneously.",
+            "Orbitals are filled in order of increasing (n+l) values, with lower 'n' prioritized for ties.",
+            "Orbitals with greater spatial extension are always filled last."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the Aufbau principle states electrons fill atomic orbitals in order of increasing energy, following the (n+l) rule: lower (n+l) means lower energy, and for same (n+l), lower 'n' fills first."
+    },
+    {
+        question: "Hund's Rule of Maximum Multiplicity dictates the filling of degenerate orbitals. If an atom has three available p-orbitals, and only two electrons need to occupy them, what is the most stable arrangement?",
+        options: [
+            "Both electrons occupy the same p-orbital with opposite spins.",
+            "Both electrons occupy the same p-orbital with parallel spins.",
+            "Each electron occupies a separate p-orbital with parallel spins.",
+            "Each electron occupies a separate p-orbital with opposite spins."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that Hund's Rule states electrons fill degenerate orbitals to give the maximum number of unpaired electrons with parallel spins, making option C the most stable arrangement."
+    },
+    {
+        question: "The Stern-Gerlach Experiment provided crucial evidence for which fundamental quantum mechanical property of the electron?",
+        options: [
+            "Its wave-particle duality.",
+            "Its discrete energy levels.",
+            "Its intrinsic spin.",
+            "Its orbital angular momentum."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the Stern-Gerlach Experiment illustrated the spin quantum number."
+    },
+    {
+        question: "The spectral lines in a line absorption spectrum are characterized by a particular appearance. How do these lines manifest against their background?",
+        options: [
+            "As bright lines on a dark background.",
+            "As a continuous band of colors.",
+            "As dark lines on a bright background.",
+            "As a series of diffuse, merging colors."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that a line absorption spectrum consists of a series of dark lines in a bright background."
+    },
+    {
+        question: "What fundamental observation made by Eugen Goldstein indicated that the positive rays were composed of particles rather than just energy waves?",
+        options: [
+            "Their deflection by magnetic fields.",
+            "Their ability to pass through perforations.",
+            "Their production of fluorescence.",
+            "Their capacity to move a small pin-wheel."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that canal rays possess particle nature, for example, they can move a small pin-wheel."
+    },
+    {
+        question: "In the context of the hydrogen atomic spectrum, which series of spectral lines is characterized by electron transitions to the principal energy level n₁=1?",
+        options: [
+            "Balmer series.",
+            "Paschen series.",
+            "Brackett series.",
+            "Lyman series."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that the Lyman series corresponds to electron returns to n₁=1."
+    },
+    {
+        question: "A type of spectrum shows no clear boundaries between colors, with one color smoothly transitioning into the next. This characteristic is typical of what kind of spectrum?",
+        options: [
+            "Line absorption spectrum.",
+            "Line emission spectrum.",
+            "Continuous spectrum.",
+            "Atomic spectrum."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that a continuous spectrum has no dark or bright spaces between lines and no clear boundaries, with colors diffusing into each other."
+    },
+    {
+        question: "The energy of a quantum of radiation is inherently tied to its frequency. If the frequency of a photon is doubled, what happens to its energy?",
+        options: [
+            "It remains unchanged.",
+            "It is halved.",
+            "It is doubled.",
+            "It is quadrupled."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that according to Planck's Equation, E = hν, meaning energy is directly proportional to frequency. Doubling frequency therefore doubles energy."
+    },
+    {
+        question: "What is the maximum number of electrons that can be accommodated within the M-shell of an atom?",
+        options: [
+            "8 electrons.",
+            "18 electrons.",
+            "32 electrons.",
+            "2 electrons."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that the M-shell corresponds to a principal quantum number n=3, and the maximum number of electrons in a shell is given by 2n², so 2*(3)² = 18 electrons."
+    },
+    {
+        question: "An electron is described as having an azimuthal quantum number (l) of 1. How many possible spatial orientations (orbitals) are associated with this electron's sub-shell?",
+        options: [
+            "One orientation.",
+            "Three orientations.",
+            "Five orientations.",
+            "Seven orientations."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that for a given l, the total number of m values (orbitals) is (2l + 1). For l=1, this is (2*1 + 1) = 3 orientations (pₓ, pᵧ, p₂)."
+    },
+    {
+        question: "When considering the shapes of atomic orbitals, which type is always spherical, regardless of its principal quantum number?",
+        options: [
+            "p-orbitals.",
+            "d-orbitals.",
+            "f-orbitals.",
+            "s-orbitals."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that s-orbitals (l=0) are spherical in shape."
+    },
+    {
+        question: "An electron transition in a hydrogen atom results in the emission of radiation in the far infrared region. This phenomenon is characteristic of which specific spectral series?",
+        options: [
+            "Balmer series.",
+            "Paschen series.",
+            "Brackett series.",
+            "Pfund series."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that the Pfund Series corresponds to the Far Infrared region."
+    },
+    {
+        question: "The (n+l) rule is a crucial component of the Aufbau principle. If two orbitals have the same (n+l) sum, which orbital is filled first?",
+        options: [
+            "The orbital with the higher principal quantum number (n).",
+            "The orbital with the lower principal quantum number (n).",
+            "The orbital with the higher azimuthal quantum number (l).",
+            "The orbital that is more spatially diffuse."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that if two orbitals have the same (n+l) value, the orbital with the lower principal quantum number (n) has lower energy and is filled first."
+    },
+    {
+        question: "If an electron in a hydrogen atom moves from n=5 to n=3, in which region of the electromagnetic spectrum would the emitted radiation be primarily observed?",
+        options: [
+            "Ultraviolet.",
+            "Visible.",
+            "Near Infrared.",
+            "Mid Infrared."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that electron transitions returning to n₁=3 correspond to the Paschen Series, which is in the Near Infrared region."
+    },
+    {
+        question: "What is the primary characteristic that distinguishes a line absorption spectrum from a line emission spectrum?",
+        options: [
+            "Emission spectra are continuous, while absorption spectra are discrete.",
+            "Absorption spectra show dark lines on a bright background, while emission spectra show bright lines on a dark background.",
+            "Emission spectra occur at lower temperatures, while absorption spectra require higher temperatures.",
+            "Absorption spectra involve electrons moving to lower energy levels, while emission spectra involve movement to higher levels."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that a line absorption spectrum appears as dark lines on a bright background, whereas a line emission spectrum appears as bright lines on a dark background."
+    },
+    {
+        question: "Which of the following sets of quantum numbers (n, l, m, s) correctly describes a possible electron state?",
+        options: [
+            "(3, 3, 0, +1/2)",
+            "(2, 0, -1, -1/2)",
+            "(4, 2, +1, +1/2)",
+            "(1, 1, 0, +1/2)"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that for valid quantum numbers: n must be positive (e.g., 4); l must be 0 to n-1 (e.g., for n=4, l=2 is valid as 2 < 4); m must be -l to +l (e.g., for l=2, m=+1 is valid); and s must be +1/2 or -1/2 (e.g., +1/2 is valid). Option C satisfies all these rules. Option A fails because l cannot be equal to n. Option B fails because for l=0, m must be 0. Option D fails because l cannot be equal to n."
+    },
+    {
+        question: "The concept of 'quantized energy' as introduced by Planck implies that a body can emit or absorb energy only in what specific manner?",
+        options: [
+            "In any infinitesimally small amount.",
+            "In continuous, smoothly varying amounts.",
+            "In integer multiples of a fundamental unit of energy.",
+            "In amounts inversely proportional to frequency."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that a body can emit or absorb energy only in integer multiples of a quantum, meaning E = n hν, which signifies energy is quantized."
+    },
+    {
+        question: "Which specific experimental observation led to the development of the magnetic quantum number, providing insight into the spatial orientation of orbitals?",
+        options: [
+            "The photoelectric effect.",
+            "The splitting of spectral lines in a strong magnetic field (Zeeman Effect).",
+            "The diffraction of electrons.",
+            "The deflection of cathode rays by electric fields."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that the magnetic quantum number was developed from the Zeeman Effect, which is the splitting of spectral lines in a strong magnetic field."
+    },
+    {
+        question: "An electron in a particular orbital is characterized by a spin quantum number of -1/2. What does this value fundamentally represent about the electron?",
+        options: [
+            "Its precise location within the orbital.",
+            "Its energy level relative to the nucleus.",
+            "Its direction of rotation on its own axis.",
+            "Its angular momentum around the nucleus."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the spin quantum number describes the intrinsic spin of an electron on its own axis, with -1/2 representing anti-clockwise spin."
+    },
+    {
+        question: "Consider a discharge tube experiment for generating positive rays. If the gas used in the tube has a significantly higher mass than hydrogen, what would be the expected observation regarding the charge-to-mass (e/m) ratio of the positive rays produced?",
+        options: [
+            "It would be higher than that from hydrogen gas.",
+            "It would be lower than that from hydrogen gas.",
+            "It would be identical to that from hydrogen gas.",
+            "It would be zero, as no positive ions would form."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that the e/m ratio of positive rays changes with the nature of the gas, and is maximum for hydrogen gas (due to its lowest mass). Therefore, a heavier gas would result in a lower e/m ratio."
+    },
+    {
+        question: "What is the defining characteristic of dₓ²-ᵧ² orbitals regarding the orientation of their lobes?",
+        options: [
+            "Their lobes lie between the x and y axes.",
+            "Their lobes are oriented along the x and y axes.",
+            "They have lobes along the z-axis and a doughnut in the xy plane.",
+            "They are spherical in shape."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that dₓ²-ᵧ² orbitals have lobes lying along the x and y axes."
+    },
+    {
+        question: "According to the Aufbau principle, electrons fill atomic orbitals in a specific sequence. Which orbital generally fills *before* the 3d orbital?",
+        options: [
+            "4p orbital.",
+            "5s orbital.",
+            "4s orbital.",
+            "3p orbital."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the filling order is 1s, 2s, 2p, 3s, 3p, 4s, 3d... This indicates that the 4s orbital fills before the 3d orbital because 4s has an (n+l) value of 4 (4+0=4) while 3d has an (n+l) value of 5 (3+2=5)."
+    },
+    {
+        question: "The spectral series where electrons return to the principal energy level n₁=4 is known by what specific name?",
+        options: [
+            "Lyman series.",
+            "Balmer series.",
+            "Paschen series.",
+            "Brackett series."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that the Brackett Series corresponds to electron returns to n₁=4."
+    },
+    {
+        question: "In a given atom, no two electrons can have the same set of four quantum numbers. This fundamental statement is known as:",
+        options: [
+            "Hund's Rule.",
+            "The Aufbau Principle.",
+            "Pauli's Exclusion Principle.",
+            "Planck's Quantum Theory."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that Pauli's Exclusion Principle states that in a given atom, no two electrons can have the same set of four quantum numbers (n, l, m, and s)."
+    },
+    {
+        question: "If the wavelength of an electromagnetic wave increases, what can be definitively stated about its frequency and wave number?",
+        options: [
+            "Both frequency and wave number will increase.",
+            "Frequency will increase, but wave number will decrease.",
+            "Both frequency and wave number will decrease.",
+            "Frequency will decrease, but wave number will increase."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that c = νλ (so frequency ν is inversely proportional to wavelength λ) and ν̄ = 1/λ (wave number ν̄ is inversely proportional to wavelength λ). Therefore, if wavelength increases, both frequency and wave number will decrease."
+    },
+    {
+        question: "A specific orbital is described as being dumbbell-shaped. Which value of the azimuthal quantum number (l) is definitively associated with this orbital type?",
+        options: [
+            "l=0.",
+            "l=1.",
+            "l=2.",
+            "l=3."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that for l=1, the sub-shell is a p-sub-shell, which has a dumbbell shape."
+    },
+    {
+        question: "What is the primary function of a spectrophotometer in the study of light and matter interaction?",
+        options: [
+            "To measure the mass of atomic particles.",
+            "To accelerate electrons in a vacuum.",
+            "To resolve light into its constituent wavelengths or frequencies for study.",
+            "To generate X-rays for crystallographic analysis."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that a spectrophotometer is used to study spectra, which involves resolving light into its constituent radiations."
+    },
+    {
+        question: "Electrons in a 2s orbital are compared to electrons in a 1s orbital. Which statement accurately describes a key difference in their average characteristics?",
+        options: [
+            "2s electrons are more strongly bound to the nucleus.",
+            "2s orbitals are smaller in size than 1s orbitals.",
+            "2s electrons possess higher energy than 1s electrons.",
+            "2s orbitals have a different fundamental shape than 1s orbitals."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that lower 'n' values correspond to lower electron energy and stronger binding to the nucleus. Therefore, a 2s electron (n=2) will have higher energy and be less strongly bound than a 1s electron (n=1), and 2s orbitals are larger than 1s orbitals. The shape remains spherical. So, 2s electrons possessing higher energy is correct."
+    },
+    {
+        question: "The electronic configuration of Chromium (Cr, Z=24) is an exception to the standard Aufbau filling order. What is the most widely accepted reason for this anomaly?",
+        options: [
+            "Its very high atomic mass.",
+            "Increased stability due to a half-filled d-subshell.",
+            "Enhanced magnetic properties due to fully paired electrons.",
+            "Lower electron-electron repulsion in the s-orbital."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in the textbook theory that elements like Chromium (Cr, Z=24) show deviations from the Aufbau principle for increased stability from half-filled d-orbitals."
+    },
+    {
+        question: "If positive rays were observed to deflect in the same direction as cathode rays in an electric field, what fundamental assumption about their charge would need to be re-evaluated?",
+        options: [
+            "That they possess a large mass.",
+            "That they are composed of neutral particles.",
+            "That they are positively charged.",
+            "That they travel in straight lines."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that positive rays deflect in a direction opposite to that of electrons (cathode rays) because they are positively charged. If they deflected in the same direction, it would imply they are negatively charged, contradicting the positive charge assumption."
+    },
+    {
+        question: "An orbital can be defined as a region of space around the nucleus. What key characteristic makes this region significant in atomic theory?",
+        options: [
+            "It represents the exact path an electron follows.",
+            "It marks the boundary where an electron's energy becomes infinite.",
+            "It is where there is the maximum probability of finding an electron.",
+            "It signifies a fixed, immutable boundary for electron containment."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that an orbital is a region of space around the nucleus where there is a maximum probability of finding an electron with a definite energy."
+    },
+    {
+        question: "According to the principles of electron distribution, how many electrons with parallel spins can maximally occupy the p-subshell?",
+        options: [
+            "One electron.",
+            "Two electrons.",
+            "Three electrons.",
+            "Six electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that a p-sub-shell (l=1) has three degenerate orbitals (px, py, pz). According to Hund's Rule, electrons will occupy these orbitals singly with parallel spins before pairing up. Therefore, a maximum of three electrons can occupy the p-subshell with parallel spins (one in each orbital)."
+    },
+    {
+        question: "The spectral line series that produces prominent colored lines in the visible region of the hydrogen spectrum was first observed and named by:",
+        options: [
+            "Max Planck.",
+            "Eugen Goldstein.",
+            "J. J. Balmer.",
+            "Wolfgang Pauli."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that J. J. Balmer (1884) observed four prominent colored lines in the visible hydrogen spectrum, which were named the Balmer Series."
+    },
+    {
+        question: "If an electron in an atom has a principal quantum number (n) of 4, what are the possible values for its azimuthal quantum number (l)?",
+        options: [
+            "0, 1, 2, 3, 4.",
+            "1, 2, 3.",
+            "0, 1, 2, 3.",
+            "-3, -2, -1, 0, +1, +2, +3."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the azimuthal quantum number (l) takes all whole number values from 0 to n-1. For n=4, the possible values are 0, 1, 2, 3."
+    },
+    {
+        question: "What significant property of positive rays allowed for the ultimate identification of the proton as a fundamental sub-atomic particle?",
+        options: [
+            "Their travel in straight lines perpendicular to the anode.",
+            "Their consistent charge-to-mass ratio regardless of the gas used.",
+            "Their maximum charge-to-mass ratio when hydrogen gas was used.",
+            "Their ability to produce fluorescence on a ZnS screen."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the positive rays obtained from hydrogen gas, which yielded the maximum e/m ratio, were named protons and identified as sub-atomic particles."
+    },
+    {
+        question: "The velocity of light in a vacuum (c) provides a fundamental relationship between the frequency (ν) and wavelength (λ) of an electromagnetic wave. Which expression correctly links these three properties?",
+        options: [
+            "ν = cλ.",
+            "λ = cν.",
+            "c = νλ.",
+            "c = ν/λ."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that the relationship between speed, frequency, and wavelength is c = νλ."
+    },
+    {
+        question: "Consider two electrons in the same 2pₓ orbital. What *must* be true about their spin quantum numbers?",
+        options: [
+            "They must both be +1/2.",
+            "They must both be -1/2.",
+            "They must have opposite spins.",
+            "They can have either parallel or opposite spins."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that an orbital can accommodate a maximum of two electrons, and these two electrons must have opposite spins, according to Pauli's Exclusion Principle."
+    },
+    {
+        question: "How does the size of an s-orbital fundamentally change as the principal quantum number (n) increases?",
+        options: [
+            "It becomes more dumbbell-shaped.",
+            "It remains the same size.",
+            "It decreases in size.",
+            "It increases in size."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that s-orbitals are spherical, and their size increases with increasing principal quantum number 'n' (e.g., 2s > 1s)."
+    },
+    {
+        question: "What phenomenon occurs when high-speed electrons (cathode rays) collide with residual gas molecules in a discharge tube, leading to the formation of positive ions?",
+        options: [
+            "Nuclear fusion.",
+            "Electron capture.",
+            "Ionization.",
+            "Beta decay."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in the textbook theory that collisions knock out one or more electrons from the gas molecules, producing positive ions (cations), which is the definition of ionization in this context."
+    },
+    {
+        question: "An electron makes a transition from a higher energy level to n₁=5 in a hydrogen atom. In which region of the electromagnetic spectrum would the emitted radiation be found?",
+        options: [
+            "Visible.",
+            "Ultraviolet.",
+            "Near Infrared.",
+            "Far Infrared."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in the textbook theory that electron transitions to n₁=5 correspond to the Pfund Series, which is located in the Far Infrared region."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-CHE-003';
+let quizData = quizData_WCW_CHE_003;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-CHE-003', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-CHE-003', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-CHE-003', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_CHE_003;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_CHE_003;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_CHE_003[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_CHE_003.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
